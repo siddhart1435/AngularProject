@@ -15,6 +15,10 @@ export class TicketService {
     return this._httpClient.get<TicketDto[]>("http://localhost:5123/api/Ticket");
   }
 
+  getAllTicketsByUserId(userId : number) : Observable<TicketDto[]>{
+    return this._httpClient.get<TicketDto[]>("http://localhost:5123/api/Ticket/"+ userId);
+  }
+
   getTicketDetails(ticketId : number) : Observable<TicketDto>{
     return this._httpClient.get<TicketDto>("http://localhost:5123/api/Ticket/GetTicketDetails/" + ticketId);
   }

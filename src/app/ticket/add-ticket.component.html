@@ -1,9 +1,14 @@
 <h2>Create Ticket</h2>
 <form class="add-form" (submit)="Add()">
-    <label>Title:</label>
-    <input type="text" placeholder="title" name="title" [(ngModel)]="ticket.title"/>
-    <label>Description:</label>
-    <textarea placeholder="description" name="description" [(ngModel)]="ticket.description"></textarea>
-    <button type="submit">Submit</button>
-    <!-- <p class="message">Not registered? <a href="#">Create an account</a></p> -->
-  </form>
+  <div class="form-group">
+    <label for="title">Title:</label>
+    <input type="text" class="form-control" id="title" placeholder="title" name="title" [(ngModel)]="ticket.title"/>
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea class="form-control" id="description" placeholder="description" name="description" [(ngModel)]="ticket.description"></textarea>
+  </div>
+  <br/>
+  <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
+  <button type="button" class="btn btn-primary" [routerLink]="['/ticket']">Cancel</button>
+</form>
