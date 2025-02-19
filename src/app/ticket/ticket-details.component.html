@@ -1,0 +1,68 @@
+<h2>Ticket Details</h2>
+
+<table class="table">
+    <tr>
+        <td>
+            <b>Ticket Id :</b>
+        </td>
+        <td>
+            {{ticket.ticketId}}
+        </td>
+        <td>
+            <b>Title :</b>
+        </td>
+        <td>
+            {{ticket.title}}
+        </td>
+        <td>
+            <b>Description :</b>
+        </td>
+        <td>
+            {{ticket.description}}
+        </td>
+        
+    </tr>
+    <tr>
+        <td>
+            <b>Created By :</b>
+        </td>
+        <td>
+            {{ticket.userName}}
+        </td>
+        <td>
+            <b>Status :</b>
+        </td>
+        <td>
+            {{ticket.statusName}}
+        </td>
+        <td>
+            <b>Created Date :</b>
+        </td>
+        <td>
+            {{ticket.createdAt | date : "dd/MM/yyyy"}}
+        </td>
+        
+    </tr>
+</table>
+<br/>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Comment Id</th>
+            <th>Ticket Id</th>
+            <th>Content</th>
+            <th>User</th>
+            <th>Created Date</th>
+        </tr>
+    </thead>
+    <tbody >
+        <tr *ngFor="let item of ticket.comments">
+            <td>{{ item.id }}</td>
+            <td>{{item.ticketId}}</td>
+            <td>{{item.content}}</td>
+            <td>{{item.userName}}</td>            
+            <td>{{item.createdAt | date : "dd/MM/yyyy"}}</td>
+        </tr>
+    </tbody>
+</table>
+<button value="Back To List" class="btn btn-primary" [routerLink]="['/ticket']">Back To List</button>

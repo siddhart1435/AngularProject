@@ -1,0 +1,27 @@
+<h2>Tickets Details</h2>
+<button *ngIf="role=='1'" class="btn btn-primary" [routerLink]="['/add-ticket']">Create New Ticket</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Created By</th>
+            <th>Created Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ticket of tickets">
+            <td>{{ticket.ticketId}}</td>
+            <td>{{ticket.title}}</td>
+            <td>{{ticket.description}}</td>
+            <td>{{ticket.statusName}}</td>
+            <td>{{ticket.userName}}</td>
+            <td>{{ticket.createdAt | date: "dd/MM/yyyy"}}</td>
+            <!-- <td><a routerLink="['/edit-product',prod.id]" class="btn btn-primary">Edit</a></td> -->
+           <td> <button name="btnView" class="btn btn-secondary me-1"  [routerLink]="['/ticket-details', ticket.ticketId]">View</button></td>
+           <td> <button name="btnView" class="btn btn-secondary me-1"  >Edit</button></td>
+        </tr>
+    </tbody>
+</table>
