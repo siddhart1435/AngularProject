@@ -1,0 +1,25 @@
+<h2>Add Comment</h2>
+
+  <div class="container mt-5">
+    <form (submit)="Add()">
+        <div class="form-group">
+            <label for="dropdown"><b>Ticket Id : </b>{{ticketId}}</label>     
+        </div>
+        <br />
+      <div class="form-group">
+        <label for="dropdown">Status</label>
+        <select class="form-control" id="status"  name="status" [(ngModel)]="selectedOption">
+        <option *ngFor="let option of status" [ngValue]="option.statusId">{{ option.statusName.trim() }}</option>
+        
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment</label>
+        <textarea class="form-control" name="comment" rows="4" placeholder="Enter your message here" [(ngModel)]="comment.content"></textarea>
+      </div>
+      <br/>
+      <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
+      <button class="btn btn-primary" [routerLink]="['/ticket-details', ticket.ticketId]">Back To Ticket</button>
+    </form>
+  </div>
+ 

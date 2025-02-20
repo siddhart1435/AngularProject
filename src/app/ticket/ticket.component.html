@@ -18,10 +18,9 @@
             <td>{{ticket.description}}</td>
             <td>{{ticket.statusName}}</td>
             <td>{{ticket.userName}}</td>
-            <td>{{ticket.createdAt | date: "dd/MM/yyyy"}}</td>
-            <!-- <td><a routerLink="['/edit-product',prod.id]" class="btn btn-primary">Edit</a></td> -->
+            <td>{{ticket.createdAt | date: "dd/MM/yyyy"}}</td>            
            <td> <button name="btnView" class="btn btn-secondary me-1"  [routerLink]="['/ticket-details', ticket.ticketId]">View</button></td>
-           <td> <button name="btnView" class="btn btn-secondary me-1"  >Edit</button></td>
+           
         </tr>
     </tbody>
 </table>

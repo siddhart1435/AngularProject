@@ -14,7 +14,7 @@ export class AuthService {
   usr !: User; 
 
   login(email: string, password: string): Observable<User> {
-    return this.checkLogin(email, password).pipe(
+    return this.checkLogin(email).pipe(
       map((data: User) => {
         this.usr = data;        
         if (this.usr != null) {
@@ -39,7 +39,7 @@ export class AuthService {
     );
   }
 
-  checkLogin(email : string, password : string): Observable<User> {
+  checkLogin(email : string): Observable<User> {
     return this._httpClient.get<User>("http://localhost:5123/api/Login/" + email)
   }
 

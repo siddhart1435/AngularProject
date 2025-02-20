@@ -10,10 +10,11 @@ import { HttpClientModule } from "@angular/common/http";
 import { TicketComponent } from "./ticket/ticket.component";
 import { TicketDetailsComponent } from "./ticket/ticket-details.component";
 import { AddTicketComponent } from "./ticket/add-ticket.component";
+import { AddCommentComponent } from "./ticket/add-comment.component";
 
 @NgModule({
     declarations:[MainComponent,HomeComponent, LoginComponent, TicketComponent
-        , TicketDetailsComponent, AddTicketComponent],
+        , TicketDetailsComponent, AddTicketComponent, AddCommentComponent],
     imports:[RouterModule, FormsModule, RouterModule.forRoot(routes), BrowserModule, HttpClientModule],
     providers:[],
     bootstrap:[MainComponent]
