@@ -1,7 +1,7 @@
 import { User } from './../models/user';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, of , map} from 'rxjs';
+import { BehaviorSubject, Observable, of, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,52 +9,58 @@ import { BehaviorSubject, Observable, of , map} from 'rxjs';
 export class AuthService {
 
   public isLoggedIn = new BehaviorSubject<boolean>(false);
-  
-  constructor(private _httpClient : HttpClient) { }
-  usr !: User; 
+
+  constructor(private _httpClient: HttpClient) { }
+  usr !: User;
 
   login(email: string, password: string): Observable<User> {
     return this.checkLogin(email).pipe(
       map((data: User) => {
-        this.usr = data;        
-        if (this.usr != null) {
-          if (this.usr.password === password) {
-            console.log(password);
-            console.log(this.usr);
-            console.log(this.usr.userId);
-            localStorage.setItem("userName", this.usr.email);
-            localStorage.setItem("role", this.usr.roleId.toString());
-            localStorage.setItem("userId", this.usr.userId.toString());
-            this.isLoggedIn.next(true);            
-            return this.usr;
-          }  
-          else
-          {
-            this.usr.userId = 0;
-          }        
+        try {
+          this.usr = data;
+          if (this.usr != null) {
+            if (this.usr.password === password) {
+              console.log(password);
+              console.log(this.usr);
+              console.log(this.usr.userId);
+              localStorage.setItem("userName", this.usr.email);
+              localStorage.setItem("role", this.usr.roleId.toString());
+              localStorage.setItem("userId", this.usr.userId.toString());
+              this.isLoggedIn.next(true);
+              return this.usr;
+            }
+            else {
+              this.usr.userId = 0;
+            }
+          }
+          //console.log("From subscribe If :" + this.usr);
+          return this.usr;
+        } catch (error) {
+          console.error("An error occurred during login:", error);
+          // Handle error as needed, e.g., show a notification
+          throw error; // Rethrow error if necessary
         }
-        console.log("From subscribe If :" + this.usr);
-        return this.usr;
       })
+
     );
   }
 
-  checkLogin(email : string): Observable<User> {
+  checkLogin(email: string): Observable<User> {
     return this._httpClient.get<User>("http://localhost:5123/api/Login/" + email)
   }
 
-  logout() : void {
-   localStorage.removeItem("userName");
-   localStorage.removeItem("role");
-   localStorage.clear();
-   this.isLoggedIn.next(false); 
+  logout(): void {
+    localStorage.removeItem("userName");
+    localStorage.removeItem("role");
+    localStorage.clear();
+    this.isLoggedIn.next(false);
   }
 
-  getRole() : string{
+  getRole(): string {
     return localStorage.getItem("role") || "";
   }
 
-  getUserId() : number {
+  getUserId(): number {
     return Number(localStorage.getItem("userId")) || 0;
   }
 

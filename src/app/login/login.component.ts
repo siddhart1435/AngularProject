@@ -23,17 +23,17 @@ export class LoginComponent {
       this.user = data;
       console.log(this.user);      
       if(this.user.userId != 0)
-        {
-          alert("Success");
+        {          
           this._router.navigate(['/home']);
     
         }
         else
         {
-          alert("Invalid");
+          alert("Invalid username and password");
         }
     }),(error)=>{
       console.error(error);
+      alert("Invalid username and password");
     })
   } 
 }
