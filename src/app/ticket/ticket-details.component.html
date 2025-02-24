@@ -48,8 +48,8 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Comment Id</th>
-            <th>Ticket Id</th>
+            <!-- <th>Comment Id</th>
+            <th>Ticket Id</th> -->
             <th>Content</th>
             <th>User</th>
             <th>Created Date</th>
@@ -57,8 +57,8 @@
     </thead>
     <tbody >
         <tr *ngFor="let item of ticket.comments">
-            <td>{{ item.id }}</td>
-            <td>{{item.ticketId}}</td>
+            <!-- <td>{{ item.id }}</td>
+            <td>{{item.ticketId}}</td> -->
             <td>{{item.content}}</td>
             <td>{{item.userName}}</td>            
             <td>{{item.createdAt | date : "dd/MM/yyyy"}}</td>
@@ -66,4 +66,4 @@
     </tbody>
 </table>
 <button value="Back To List" class="btn btn-primary" [routerLink]="['/ticket']">Back To List</button>
-&nbsp;<button  class="btn btn-primary" [routerLink]="['/add-comment', ticket.ticketId]">Add Comment</button>
+&nbsp;<button *ngIf="status == 'Open' || status == 'In-Progress'" class="btn btn-primary" [routerLink]="['/add-comment', ticket.ticketId]">Add Comment</button>

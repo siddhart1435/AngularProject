@@ -14,6 +14,7 @@ export class TicketDetailsComponent {
   ticket : TicketDto = {ticketId : 0, userId:0,description:"",statusId:0,title:""
     , userName:"", statusName:"", createdAt:new Date, comments : []};
   tktId : number = 0;
+  status !: string; 
   ngOnInit(){
 this.route.params.subscribe(param => {
  // alert(param['ticketId']);
@@ -23,6 +24,7 @@ this.route.params.subscribe(param => {
 //alert(this.ticketId);
     this._ticketService.getTicketDetails(this.tktId).subscribe((data)=>{
       this.ticket = data;
+      this.status = this.ticket.statusName;
       console.log(this.ticket);
     })
   }
