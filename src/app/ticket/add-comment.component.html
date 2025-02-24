@@ -7,14 +7,15 @@
         </div>
         <br />
       <div class="form-group">
-        <label for="dropdown">Status</label>
-        <select class="form-control" id="status"  name="status" [(ngModel)]="selectedOption">
+        <label for="dropdown"><b>Status</b></label>
+        <select class="form-control" id="status"  name="status" [(ngModel)]="selectedOption" style="width:30%;">
         <option *ngFor="let option of status" [ngValue]="option.statusId">{{ option.statusName.trim() }}</option>
         
         </select>
       </div>
+      <br/>
       <div class="form-group">
-        <label for="comment">Comment</label>
+        <label for="comment"><b>Comment</b></label>
         <textarea class="form-control" name="comment" rows="4" placeholder="Enter your message here" [(ngModel)]="comment.content"></textarea>
       </div>
       <br/>

@@ -1,17 +1,59 @@
-<div class="login-page">
+<!-- <div class="login-page">
     <div class="form">
-      <!-- <form class="register-form">
+       <form class="register-form">
         <input type="text" placeholder="name"/>
         <input type="password" placeholder="password"/>
         <input type="text" placeholder="email address"/>
         <button>create</button>
         <p class="message">Already registered? <a href="#">Sign In</a></p>
       </form> -->
-      <form class="login-form" (submit)="login()">
+      <!-- <form class="login-form" (submit)="login()">
         <input type="text" placeholder="email" name="email" [(ngModel)]="email"/>
         <input type="password" placeholder="password" name="password" [(ngModel)]="password"/>
         <button type="submit">login</button>
-        <!-- <p class="message">Not registered? <a href="#">Create an account</a></p> -->
-      </form>
+        <p class="message">Not registered? <a href="#">Create an account</a></p>  -->
+      <!-- </form>
     </div>
-  </div>
+  </div> --> 
+
+  <h2>Login</h2>
+
+<main>
+<div class="container">
+    <div class="pic2"></div>
+
+ <img src="https://geoplm.com/images/geoplm/home-service-technical-support.png" alt="Imaginative">    
+
+      <form [formGroup]="userForm" (submit)="login()">
+        <h1>Log in To Continue</h1>
+          <div class="inp">
+
+            <input type="text" formControlName="email" name="email" placeholder="email"/>
+            
+          </div>
+          <div class="text-danger" *ngIf="userForm.controls['email'].invalid && (isFormsubmitted || userForm.controls['email'].touched)">
+            <span *ngIf="userForm.controls['email'].hasError('email')" style="text-decoration-color: white;">Enter a Valid User Email</span>
+            <span style="text-decoration-color: white;" *ngIf="userForm.controls['email'].hasError('required')">Please fill out this field.</span>
+
+          </div>
+
+          <br>
+          <div class="inp">
+
+            <input type="password" formControlName="password" name="password" />
+            
+          </div>
+
+          <div class="text-danger" *ngIf="userForm.controls['password'].invalid && (isFormsubmitted || userForm.controls['password'].touched || userForm.controls['password'].dirty)">
+             <span *ngIf="userForm.controls['password'].errors?.['password']">Password Must Contain Minimum 8</span> 
+            <span *ngIf="userForm.controls['password'].hasError('required')">Please fill out this field.</span>
+
+          </div>
+
+          <br>
+          <div style="display: flex;"></div>
+          <br>
+          <button type="submit" [disabled]="!userForm.valid">Login</button><br>
+        </form>
+</div>
+</main>

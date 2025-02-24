@@ -3,7 +3,7 @@ import { MainComponent } from "./main/main.component";
 import { HomeComponent } from "./home/home.component";
 import { RouterModule, RouterOutlet } from "@angular/router";
 import { BrowserModule } from "@angular/platform-browser";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { routes } from "./app.routes";
 import { LoginComponent } from "./login/login.component";
 import { HttpClientModule } from "@angular/common/http";
@@ -15,7 +15,8 @@ import { AddCommentComponent } from "./ticket/add-comment.component";
 @NgModule({
     declarations:[MainComponent,HomeComponent, LoginComponent, TicketComponent
         , TicketDetailsComponent, AddTicketComponent, AddCommentComponent],
-    imports:[RouterModule, FormsModule, RouterModule.forRoot(routes), BrowserModule, HttpClientModule],
+    imports:[RouterModule, FormsModule, RouterModule.forRoot(routes), BrowserModule
+        , HttpClientModule, ReactiveFormsModule],
     providers:[],
     bootstrap:[MainComponent]
 
