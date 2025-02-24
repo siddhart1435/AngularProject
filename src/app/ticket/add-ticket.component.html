@@ -1,14 +1,20 @@
 <h2>Create Ticket</h2>
-<form class="add-form" (submit)="Add()">
+<form #addTicketForm="ngForm" (submit)="Add()">
   <div class="form-group">
     <label for="title">Title:</label>
-    <input type="text" class="form-control" id="title" placeholder="title" name="title" [(ngModel)]="ticket.title"/>
+    <input type="text" class="form-control" id="title" placeholder="title" name="title" [(ngModel)]="ticket.title" #title="ngModel" required/>
+    <div *ngIf="title?.invalid && title?.touched" style="color: red;">
+      Title is Required
+    </div>
   </div>
   <div class="form-group">
     <label for="description">Description:</label>
-    <textarea class="form-control" id="description" placeholder="description" name="description" [(ngModel)]="ticket.description"></textarea>
+    <textarea class="form-control" id="description" placeholder="description" name="description" [(ngModel)]="ticket.description" #description="ngModel" required></textarea>
+    <div *ngIf="description?.invalid && description?.touched" style="color: red;">
+      Description is Required
+    </div>
   </div>
   <br/>
-  <button type="submit" class="btn btn-primary">Submit</button>&nbsp;
+  <button type="submit" class="btn btn-primary" [disabled]="addTicketForm.invalid">Submit</button>&nbsp;
   <button type="button" class="btn btn-primary" [routerLink]="['/ticket']">Cancel</button>
 </form>
