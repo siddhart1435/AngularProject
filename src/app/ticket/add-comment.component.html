@@ -15,16 +15,11 @@
       </div>
       <br/>
       <div class="form-group">
-<<<<<<< HEAD
-        <label for="comment"><b>Comment</b></label>
-        <textarea class="form-control" name="comment" rows="4" placeholder="Enter your message here" [(ngModel)]="comment.content"></textarea>
-=======
         <label for="comment">Comment</label>
         <textarea class="form-control" name="comment" rows="4" placeholder="Enter your message here" [(ngModel)]="comment.content" #comment.content="ngModel" required></textarea>
         <div *ngIf="addCommentForm.controls['comment'].invalid && addCommentForm.controls['comment'].touched " style="color: red;">
           Comment is Required
         </div>
->>>>>>> 37f44096b38cfb941edd643fd68d17e7443587bb
       </div>
       <br/>
       <button type="submit" class="btn btn-primary" [disabled]="addCommentForm.invalid">Submit</button>&nbsp;
